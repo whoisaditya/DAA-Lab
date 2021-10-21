@@ -23,9 +23,9 @@ public:
     Graph(int v, int e);
 
     // Function to insert a new edge
-    void addEdge(int start, int e, int i);
+    void add_edge(int start, int e, int i);
 
-    int travllingSalesmanProblem(int s);
+    int travlling_salesman_problem(int s);
 };
 
 // Function to fill the empty adjacency matrix
@@ -45,15 +45,15 @@ Graph::Graph(int v, int e)
 }
 
 // Function to add an edge to the adj
-void Graph::addEdge(int start, int e, int i)
+void Graph::add_edge(int start, int e, int i)
 {
     // Considering a bidirectional edge
     adj[start][e] = i;
     adj[e][start] = i;
 }
 
-// implementation of traveling Salesman Problem
-int Graph::travllingSalesmanProblem(int s)
+// Implementation of traveling Salesman Problem
+int Graph::travlling_salesman_problem(int s)
 {
     // store all vertex apart from source vertex
     vector<int> vertex;
@@ -99,6 +99,8 @@ int main()
 
     int v = 0, e = 0, ch;
 
+    cout<<"Aditya Mitra 20BCE2044\n" << endl;
+
     while (true)
     {
         cout << "\nMenu\n1. Create your own graph\n2. Use the sample graph\n3. Exit\nYour choice: ";
@@ -109,18 +111,34 @@ int main()
         {
         case 1:
         {
-            cout << "Enter the no. of vertices and edges : ";
-            cin >> v >> e;
+            cout << "Enter Graph Details: " << endl;
+
+            cout << "No. of Vertices : ";
+            cin >> v;
+
+            cout << "No. of Edges : ";
+            cin >> e;
 
             // Create the graph
             Graph G(v, e);
+            int x, y, z;
 
-            cout << "Enter the starting and end point of the edges and weight" << endl;
+            cout << endl;
             for (int j = 0; j < e; j++)
             {
-                int x, y, z;
-                cin >> x >> y >> z;
-                G.addEdge(x, y, z);
+                
+                cout << "Edge " << (j+1) << ":" << endl;
+                cout << "Starting Node: ";
+                cin >> x;
+
+                cout << "Ending Node: ";
+                cin >> y;
+
+                cout << "Weight: ";
+                cin >> z;
+
+                cout << endl;
+                G.add_edge(x, y, z);
             }
 
             cout << "Adjadency matrix" << endl;
@@ -134,7 +152,7 @@ int main()
                 cout << endl;
             }
 
-            cout << "\nSolution:" << G.travllingSalesmanProblem(s) << endl;
+            cout << "\nSolution:" << G.travlling_salesman_problem(s) << endl;
 
             break;
         }
@@ -146,10 +164,10 @@ int main()
 
             Graph G(v, e);
 
-            G.addEdge(0, 1, 10);
-            G.addEdge(1, 2, 20);
-            G.addEdge(2, 3, 40);
-            G.addEdge(3, 0, 30);
+            G.add_edge(0, 1, 10);
+            G.add_edge(1, 2, 20);
+            G.add_edge(2, 3, 40);
+            G.add_edge(3, 0, 30);
 
             cout << "Adjadency matrix" << endl;
 
@@ -162,7 +180,7 @@ int main()
                 cout << endl;
             }
 
-            cout << "\nSolution:" << G.travllingSalesmanProblem(s) << endl;
+            cout << "\nSolution:" << G.travlling_salesman_problem(s) << endl;
 
             break;
         }
